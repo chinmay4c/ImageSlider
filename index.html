@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Slider</title>
+    <title>Elegant Image Slider</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Image Slider</h1>
+        <h1>Elegant Image Slider</h1>
         <div class="slider-container">
             <div class="slider">
-                <img src="images/image1.jpg" alt="Image 1" class="slide">
-                <img src="images/image2.jpg" alt="Image 2" class="slide">
-                <img src="images/image3.jpg" alt="Image 3" class="slide">
-                <img src="images/image4.jpg" alt="Image 4" class="slide">
-                <img src="images/image5.jpg" alt="Image 5" class="slide">
-                <img src="images/image6.jpg" alt="Image 6" class="slide">
+                <div class="slide" style="background-image: url('images/image1.jpg');">
+                    <div class="slide-content">
+                        <h2>Serene Landscape</h2>
+                        <p>A peaceful view of nature's beauty</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/image2.jpg');">
+                    <div class="slide-content">
+                        <h2>Vibrant Cityscape</h2>
+                        <p>Urban energy captured in a single frame</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/image3.jpg');">
+                    <div class="slide-content">
+                        <h2>Tranquil Waters</h2>
+                        <p>Calm reflections on a still lake</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/image4.jpg');">
+                    <div class="slide-content">
+                        <h2>Majestic Mountains</h2>
+                        <p>Awe-inspiring peaks touching the sky</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/image5.jpg');">
+                    <div class="slide-content">
+                        <h2>Lush Greenery</h2>
+                        <p>A refreshing view of verdant forests</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('images/image6.jpg');">
+                    <div class="slide-content">
+                        <h2>Golden Sunset</h2>
+                        <p>A breathtaking display of evening colors</p>
+                    </div>
+                </div>
             </div>
             <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
             <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
             <div class="dots-container"></div>
         </div>
         <div class="controls">
-            <button id="play-pause-btn"><i class="fas fa-play"></i></button>
-            <select id="transition-speed">
-                <option value="3000">Slow</option>
-                <option value="2000" selected>Normal</option>
-                <option value="1000">Fast</option>
-            </select>
+            <button id="play-pause-btn"><i class="fas fa-pause"></i></button>
+            <div class="speed-container">
+                <label for="transition-speed">Speed:</label>
+                <input type="range" id="transition-speed" min="1000" max="5000" step="500" value="3000">
+            </div>
+            <button id="fullscreen-btn"><i class="fas fa-expand"></i></button>
         </div>
-        <div class="caption"></div>
+        <div class="progress-bar"></div>
     </div>
     <script src="script.js"></script>
 </body>
