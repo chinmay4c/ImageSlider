@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+}
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .container {
@@ -16,7 +23,8 @@ body {
 
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: var(--secondary-color);
+    font-weight: 600;
 }
 
 .slider-container {
@@ -24,32 +32,60 @@ h1 {
     max-width: 100%;
     margin: 20px auto;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .slider {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .slide {
     min-width: 100%;
     height: 500px;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.slide:hover .slide-content {
+    transform: translateY(0);
+}
+
+.slide-content h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.slide-content p {
+    margin: 0;
+    font-size: 16px;
 }
 
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: var(--secondary-color);
     border: none;
     padding: 15px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -59,7 +95,7 @@ h1 {
 }
 
 .prev-btn:hover, .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -86,7 +122,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
 }
 
 .dot.active {
@@ -102,10 +138,10 @@ h1 {
     margin-top: 20px;
 }
 
-#play-pause-btn, #transition-speed {
+#play-pause-btn, #fullscreen-btn {
     padding: 10px 15px;
     font-size: 16px;
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -113,16 +149,25 @@ h1 {
     transition: background-color 0.3s;
 }
 
-#play-pause-btn:hover, #transition-speed:hover {
+#play-pause-btn:hover, #fullscreen-btn:hover {
     background-color: #2980b9;
 }
 
-.caption {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #2c3e50;
+.speed-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#transition-speed {
+    width: 150px;
+}
+
+.progress-bar {
+    height: 5px;
+    background-color: var(--primary-color);
+    width: 0;
+    transition: width 0.1s linear;
 }
 
 @media (max-width: 768px) {
