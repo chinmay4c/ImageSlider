@@ -5,35 +5,43 @@
     --secondary-color: #2c3e50;
     --background-color: #f5f7fa;
     --text-color: #333;
+    --slide-content-bg: rgba(0, 0, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Poppins', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
+    line-height: 1.6;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 h1 {
     text-align: center;
     color: var(--secondary-color);
     font-weight: 600;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
 }
 
 .slider-container {
     position: relative;
     max-width: 100%;
-    margin: 20px auto;
+    margin: 0 auto;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .slider {
@@ -55,7 +63,7 @@ h1 {
     left: 0;
     right: 0;
     padding: 20px;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    background: var(--slide-content-bg);
     color: white;
     transform: translateY(100%);
     transition: transform 0.5s ease;
@@ -146,11 +154,12 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 #play-pause-btn:hover, #fullscreen-btn:hover {
     background-color: #2980b9;
+    transform: scale(1.05);
 }
 
 .speed-container {
@@ -161,6 +170,34 @@ h1 {
 
 #transition-speed {
     width: 150px;
+    -webkit-appearance: none;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    border-radius: 5px;
+}
+
+#transition-speed:hover {
+    opacity: 1;
+}
+
+#transition-speed::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#transition-speed::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .progress-bar {
@@ -168,10 +205,26 @@ h1 {
     background-color: var(--primary-color);
     width: 0;
     transition: width 0.1s linear;
+    margin-top: 20px;
+    border-radius: 5px;
 }
 
 @media (max-width: 768px) {
     .slide {
         height: 300px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .speed-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #transition-speed {
+        width: 100%;
     }
 }
